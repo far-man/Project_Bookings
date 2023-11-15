@@ -55,11 +55,6 @@ def add_booking(booking: SBooking):
 
 
 
-def freedom():
-    pass
-
-
-
 
 
 
