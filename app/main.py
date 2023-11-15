@@ -51,3 +51,9 @@ class SBooking(BaseModel):
 @app.post('/bookings')
 def add_booking(booking: SBooking):
     pass
+
+print('123')
+
+
+
+
