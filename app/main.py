@@ -52,7 +52,23 @@ class SBooking(BaseModel):
 def add_booking(booking: SBooking):
     pass
 
+
 print('123')
+print('123')
+print('123')
+print('123')
+print('123')
+print('123')
+print('123')
+print('123')
+
+
+
+
+
+
+
+
 
 
 
