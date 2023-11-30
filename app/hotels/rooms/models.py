@@ -1,9 +1,11 @@
 from typing import Optional
-from sqlalchemy import JSON, ForeignKey
+from sqlalchemy import JSON, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, Mapped, mapped_column
+
 from app.database import Base
 
 
+# Модель написана в соответствии с современным стилем Алхимии (версии 2.x)
 class Rooms(Base):
     __tablename__ = "rooms"
 

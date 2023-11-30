@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, String, Boolean, JSON, ForeignKey, Date,
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
 
-
 class Users(Base):
     __tablename__ = 'users'
 
