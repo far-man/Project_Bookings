@@ -1,10 +1,12 @@
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship, mapped_column, Mapped
+
 from app.database import Base
-from sqlalchemy import Column, Integer, String, Boolean, JSON, ForeignKey, Date, Computed
-from sqlalchemy.orm import relationship, Mapped, mapped_column
 
 
+# Модель написана в соответствии с современным стилем Алхимии (версии 2.x)
 class Users(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str]
@@ -13,6 +15,8 @@ class Users(Base):
     bookings: Mapped[list["Bookings"]] = relationship(back_populates="user")
 
     def __str__(self):
-        return f" Пользователь {self.email}"
+        return f"Пользователь {self.email}"
+
+
 
     

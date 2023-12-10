@@ -1,14 +1,14 @@
-from fastapi import Request, Depends
-from jose import jwt, JWTError, ExpiredSignatureError
+from fastapi import Depends, Request
+from jose import ExpiredSignatureError, JWTError, jwt
 
 from app.config import settings
-from app.users.dao import UserDAO
 from app.exceptions import (
     IncorrectTokenFormatException,
     TokenAbsentException,
     TokenExpiredException,
     UserIsNotPresentException,
 )
+from app.users.dao import UserDAO
 
 
 def get_token(request: Request):
@@ -35,5 +35,6 @@ async def get_current_user(token: str = Depends(get_token)):
     user = await UserDAO.find_one_or_none(id=int(user_id))
     if not user:
         raise UserIsNotPresentException
+
     return user
 

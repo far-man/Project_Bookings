@@ -1,10 +1,10 @@
-from sqlalchemy import JSON, Integer
+from sqlalchemy import JSON, Column, Integer, String
 from sqlalchemy.orm import relationship, mapped_column, Mapped
-
 
 from app.database import Base
 
 
+# Модель написана в соответствии с современным стилем Алхимии (версии 2.x)
 class Hotels(Base):
     __tablename__ = "hotels"
 
@@ -19,3 +19,4 @@ class Hotels(Base):
 
     def __str__(self):
         return f"Отель {self.name} {self.location[:30]}"
+

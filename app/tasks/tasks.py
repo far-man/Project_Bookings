@@ -24,16 +24,18 @@ def process_pic(
         resized_img.save(f"app/static/images/resized_{width}_{height}_{im_path.name}")
 
 
-# @celery.task  # Раскомментировать, если нужен celery вместо BackgroundTasks
+#
+@celery.task  # Раскомментировать, если нужен celery вместо BackgroundTasks
 def send_booking_confirmation_email(
     booking: dict,
     email_to: EmailStr,
 ):
     # Удалите строчку ниже для отправки сообщения на свой email, а на пользовательский
-    email_to = settings.SMTP_USER
+    # email_to = settings.SMTP_USER
     msg_content = create_booking_confirmation_template(booking, email_to)
 
     with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT) as server:
         server.login(settings.SMTP_USER, settings.SMTP_PASS)
         server.send_message(msg_content)
     logger.info(f"Successfully send email message to {email_to}")
+

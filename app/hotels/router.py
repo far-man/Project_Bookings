@@ -37,8 +37,3 @@ async def get_hotel_by_id(
     hotel_id: int,
 ) -> Optional[SHotel]:
     return await HotelDAO.find_one_or_none(id=hotel_id)
-
-
-
-
-

@@ -23,3 +23,4 @@ class Rooms(Base):
 
     def __str__(self):
         return f"Номер {self.name}"
+

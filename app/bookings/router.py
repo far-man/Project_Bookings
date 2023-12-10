@@ -36,9 +36,9 @@ async def add_booking(
     # TypeAdapter и model_dump - это новинки новой версии Pydantic 2.0
     booking = TypeAdapter(SNewBooking).validate_python(booking).model_dump()
     # Celery - отдельная библиотека
-    # send_booking_confirmation_email.delay(booking, user.email)
+    send_booking_confirmation_email.delay(booking, user.email)
     # Background Tasks - встроено в FastAPI
-    # background_tasks.add_task(send_booking_confirmation_email, booking, user.email)
+    background_tasks.add_task(send_booking_confirmation_email, booking, user.email)
     return booking
 
 

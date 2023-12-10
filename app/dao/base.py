@@ -73,3 +73,4 @@ class BaseDAO:
 
             logger.error(msg, extra={"table": cls.model.__tablename__}, exc_info=True)
             return None
+

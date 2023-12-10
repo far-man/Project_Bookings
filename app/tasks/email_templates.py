@@ -23,3 +23,4 @@ def create_booking_confirmation_template(
         subtype="html"
     )
     return email
+
