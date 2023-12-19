@@ -18,6 +18,7 @@ class SBooking(BaseModel):
         # orm_mode поменял название во 2 версии Pydantic
         from_attributes = True
 
+
 class SBookingInfo(SBooking):
     image_id: int
     name: str
