@@ -18,10 +18,10 @@ from app.config import settings
 from app.database import engine
 from app.hotels.router import router as router_hotels
 from app.images.router import router as router_images
-# from app.importer.router import router as router_import
+from app.importer.router import router as router_import
 from app.logger import logger
 from app.pages.router import router as router_pages
-# from app.prometheus.router import router as router_prometheus
+from app.prometheus.router import router as router_prometheus
 from app.users.router import router_auth, router_users
 
 app = FastAPI(
@@ -31,12 +31,12 @@ app = FastAPI(
 )
 
 
-if settings.MODE != "TEST":
-    # Подключение Sentry для мониторинга ошибок. Лучше выключать на период локального тестирования
-    sentry_sdk.init(
-        dsn=settings.SENTRY_DSN,
-        traces_sample_rate=1.0,
-    )
+# if settings.MODE != "TEST":
+#     # Подключение Sentry для мониторинга ошибок. Лучше выключать на период локального тестирования
+#     sentry_sdk.init(
+#         dsn=settings.SENTRY_DSN,
+#         traces_sample_rate=1.0,
+#     )
 
 
 # Включение основных роутеров
@@ -47,8 +47,8 @@ app.include_router(router_bookings)
 
 # Включение дополнительных роутеров
 app.include_router(router_images)
-# app.include_router(router_prometheus)
-# app.include_router(router_import)
+app.include_router(router_prometheus)
+app.include_router(router_import)
 
 
 # Подключение CORS, чтобы запросы к API могли приходить из браузера
